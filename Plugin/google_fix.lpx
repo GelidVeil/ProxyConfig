@@ -23,42 +23,5 @@ DOMAIN-SUFFIX, ytimg.com, PROXY
 DOMAIN-SUFFIX, googlevideo.com, PROXY
 
 [Script]
-http-request ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-content=
-function handleRequest(request) {
-    var headers = request.headers || {};
-    headers['Accept-Language'] = 'en-US,en;q=0.9';
-    delete headers['X-Forwarded-For'];
-    delete headers['Client-IP'];
-    delete headers['CF-Connecting-IP'];
-    delete headers['X-Real-IP'];
-    return headers;
-}, type=http-request, tag=Google请求, enable=true
-
-http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-content=
-function handleResponse(response) {
-    var status = response.statusCode;
-    if ([301,302,303,307,308].indexOf(status) !== -1) {
-        var location = response.headers['Location'];
-        if (location) {
-            var newLocation = location
-                .replace(/^https?:\/\/(www\.)?google\.[a-z]{2,3}(\/|$)/, 'https://www.google.com/')
-                .replace(/^https?:\/\/(www\.)?youtube\.[a-z]{2,3}(\/|$)/, 'https://www.youtube.com/')
-                .replace(/^https?:\/\/(www\.)?gmail\.[a-z]{2,3}(\/|$)/, 'https://www.gmail.com/')
-                .replace(/^https?:\/\/(www\.)?googleapis\.[a-z]{2,3}(\/|$)/, 'https://www.googleapis.com/');
-            if (newLocation !== location) {
-                response.headers['Location'] = newLocation;
-            }
-        }
-    }
-    var body = response.body;
-    if (body && typeof body === 'string') {
-        var newBody = body
-            .replace(/https?:\/\/(www\.)?google\.[a-z]{2,3}/g, 'https://www.google.com')
-            .replace(/https?:\/\/(www\.)?youtube\.[a-z]{2,3}/g, 'https://www.youtube.com')
-            .replace(/https?:\/\/(www\.)?gmail\.[a-z]{2,3}/g, 'https://www.gmail.com');
-        if (newBody !== body) {
-            response.body = newBody;
-        }
-    }
-    return response;
-}, type=http-response, tag=Google响应, enable=true
+http-request ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/ProxyConfig/refs/heads/main/Script/google_fix.js, type=http-request, tag=Google请求, enable=true
+http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/ProxyConfig/refs/heads/main/Script/google_fix.js, type=http-response, tag=Google响应, enable=true
