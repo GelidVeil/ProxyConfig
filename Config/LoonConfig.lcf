@@ -239,6 +239,10 @@ https://rule.kelee.one/Loon/SteamCN.lsr, policy=DIRECT, tag=SteamCN, enabled=tru
 https://kelee.one/Tool/Loon/Lsr/SpeedtestInternational.lsr, policy=全球畅连, tag=Speedtest Intl, enabled=true
 
 [Rewrite]
+# ======= Google重定向  ======= #
+^https?://(www.)?g.cn 302 https://www.google.com
+^https?://(www.)?google.cn 302 https://www.google.com
+^https?:\/\/(www\.)?(g|google)\.cn 302 https://www.google.com
 
 [Script]
 
@@ -506,8 +510,5 @@ https://kelee.one/Tool/Loon/Lpx/ZongHeng_remove_ads.lpx, tag=纵横小说去广�
 https://kelee.one/Tool/Loon/Lpx/ZuiYou_remove_ads.lpx, tag=最右去广告, enabled=true
 
 [Mitm]
+hostname = youtubei.googleapis.com,script.hub,*.script.hub,*.googlevideo.com,missav.ai,missav.live,missav.ws,ddgksf2013.top,-consumer.fcbox.com,-*huami.com,-*amemv.com,-*snssdk.com,-testflight.apple.com,-*.fcbox.com
 skip-server-cert-verify = false
-hostname = youtubei.googleapis.com,script.hub,*.script.hub,*.googlevideo.com,*.google.cn,missav.ai,missav.live,missav.ws,ddgksf2013.top,-www.google.com,-consumer.fcbox.com,-*huami.com,-*amemv.com,-*snssdk.com,-testflight.apple.com,-*.fcbox.com
-# >>>>> CA证书 <<<<< #
-ca-passphrase = 
-ca-p12 = 
