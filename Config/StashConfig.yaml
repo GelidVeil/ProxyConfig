@@ -1,0 +1,686 @@
+#========= 基础设置 ========#
+mode: rule
+log-level: info
+#========= DNS ========#
+dns:
+  default-nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+    - 180.184.1.1
+    - 114.114.114.114
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.arpa'
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - +.market.xiaomi.com
+    - +.srv.nintendo.net
+    - +.stun.playstation.net
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+    - time.*.com
+    - ntp.*.com
+    - localhost.ptlogin2.qq.com
+#========= 订阅链接 =========#
+proxy-providers:
+  Sub1:
+    url: 此处填入你的订阅
+    benchmark-url: http://www.gstatic.com/generate_204
+    benchmark-timeout: 5
+    interval: 86400
+  Sub2:
+    url: 此处填入你的订阅
+    benchmark-url: http://www.gstatic.com/generate_204
+    benchmark-timeout: 5
+    interval: 86400
+#========= 策略组 ========#
+proxy-groups:
+  - name: 全球畅连
+    type: select
+    proxies: [♻️自动选择, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+  - name: 国际社交
+    type: select
+    proxies: [♻️自动选择, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
+  - name: 国际媒体
+    type: select
+    proxies: [♻️自动选择, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png
+  - name: 游戏平台
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - name: Apple
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+  - name: Microsoft
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png
+  - name: Google
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Google.png
+  - name: PayPal
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png
+  - name: 哔哩哔哩
+    type: select
+    proxies: [DIRECT, 🇭🇰香港, 🇨🇳台湾, 🇸🇬新加坡, 🇯🇵日本, 🇺🇸美国]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png
+  - name: ♻️自动选择
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(.))(?!.*((?i)内地|大陆|回国|校园|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|游戏|🎮|(\b(50|100|200|300|400|500|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|GAME)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+  - name: 🇭🇰香港
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(香港|港|\\bHK\\b|HKG|Hong Kong|Hong))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+  - name: 🇲🇴澳门
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(澳门|\\bMO\\b|MAC|Macao|Macau))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Macao.png
+  - name: 🇨🇳台湾
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(台湾|台|灣|\\bTW\\b|TWN|Taiwan|Taipei))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+  - name: 🇯🇵日本
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(日本|\\bJP\\b|JPN|Japan|Tokyo|Osaka))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+  - name: 🇰🇷韩国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(韩国|韩|\\bKR\\b|KOR|South Korea|Korea|Seoul))(?!(?:.*(朝鲜|KP|PRK|North Korea|回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+  - name: 🇸🇬新加坡
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(新加坡|\\bSG\\b|SGP|狮|獅|Singapore))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+  - name: 🇲🇾马来西亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(马来西亚|马来|\\bMY\\b|MYS|Malaysia|Kuala Lumpur))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Malaysia.png
+  - name: 🇮🇩印度尼西亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(印度尼西亚|印尼|\\bID\\b|IDN|Indonesia|Jakarta))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Indonesia.png
+  - name: 🇵🇭菲律宾
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(菲律宾|菲|\\bPH\\b|PHL|Philippines|Manila))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Philippines.png
+  - name: 🇻🇳越南
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(越南|越|\\bVN\\b|VNM|Vietnam|Hanoi|Ho Chi Minh))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Vietnam.png
+  - name: 🇹🇭泰国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(泰国|\\bTH\\b|THA|Thailand|Bangkok))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Thailand.png
+  - name: 🇮🇳印度
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(印度|\\bIN\\b|IND|India|Bangalore|Mumbai|New Delhi))(?!(?:.*(英属印度洋领地|IO|IOT|BIOT|British Indian Ocean Territory|回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png
+  - name: 🇹🇷土耳其
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(土耳其|\\bTR\\b|TUR|Turkey|Türkiye|Turkiye|Istanbul|Ankara))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Turkey.png
+  - name: 🇮🇱以色列
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(以色列|以|\\bIL\\b|ISR|Israel|Tel Aviv|Haifa))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Israel.png
+  - name: 🇦🇪阿联酋
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(阿联酋|\\bAE\\b|ARE|UAE|United Arab Emirates|Dubai|Abu Dhabi))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Arab_Emirates.png
+  - name: 🇸🇦沙特阿拉伯
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(沙特阿拉伯|沙特|\\bSA\\b|SAU|Saudi Arabia|Riyadh))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Saudi_Arabia.png
+  - name: 🇬🇧英国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(英国|\\bUK\\b|\\bGB\\b|GBR|United Kingdom|London|Manchester))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png
+  - name: 🇩🇪德国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(德国|\\bDE\\b|DEU|Germany|Berlin))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png
+  - name: 🇫🇷法国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(法国|\\bFR\\b|FRA|France|Paris))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png
+  - name: 🇳🇱荷兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(荷兰|\\bNL\\b|NLD|Netherlands|Amsterdam))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Netherlands.png
+  - name: 🇮🇹意大利
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(意大利|\\bIT\\b|ITA|Italy|Rome))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Italy.png
+  - name: 🇪🇸西班牙
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(西班牙|\\bES\\b|ESP|Spain|Madrid))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Spain.png
+  - name: 🇵🇹葡萄牙
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(葡萄牙|葡|\\bPT\\b|PRT|Portugal|Lisbon))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Portugal.png
+  - name: 🇨🇭瑞士
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(瑞士|\\bCH\\b|CHE|Switzerland|Zurich))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Switzerland.png
+  - name: 🇮🇸冰岛
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(冰岛|冰|\\bIS\\b|ISL|Iceland|Reykjavík|Reykjavik|Akureyri))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Iceland.png
+  - name: 🇸🇪瑞典
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(瑞典|\\bSE\\b|SWE|Sweden|Stockholm))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Sweden.png
+  - name: 🇳🇴挪威
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(挪威|挪|\\bNO\\b|NOR|Norway|Oslo))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Norway.png
+  - name: 🇩🇰丹麦
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(丹麦|\\bDK\\b|DNK|Denmark|Copenhagen))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Denmark.png
+  - name: 🇫🇮芬兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(芬兰|芬|\\bFI\\b|FIN|Finland|Helsinki))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Finland.png
+  - name: 🇵🇱波兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(波兰|\\bPL\\b|POL|Poland|Warsaw))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Republic_Of_Poland.png
+  - name: 🇨🇿捷克
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(捷克|捷|\\bCZ\\b|CZE|Czech Republic|Czech))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Czech_Republic.png
+  - name: 🇮🇪爱尔兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(爱尔兰|\\bIE\\b|IRL|Ireland|Dublin))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Ireland.png
+  - name: 🇷🇺俄罗斯
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(俄罗斯|\\bRU\\b|RUS|Russia|Moscow))(?!(?:.*(白俄罗斯|白俄|BY|BLR|Belarus|回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png
+  - name: 🇺🇦乌克兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(乌克兰|\\bUA\\b|UKR|Ukraine|Kyiv|Kharkiv))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Ukraine.png
+  - name: 🇺🇸美国
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(美国|\\bUS\\b|USA|United States|America|New York|Los Angeles))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+  - name: 🇨🇦加拿大
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(加拿大|\\bCA\\b|CAN|Canada|Ottawa))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Canada.png
+  - name: 🇲🇽墨西哥
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(墨西哥|\\bMX\\b|MEX|Mexico|Mexico City|Guadalajara))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Mexico.png
+  - name: 🇧🇷巴西
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(巴西|\\bBR\\b|BRA|Brazil|Brasília))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Brazil.png
+  - name: 🇦🇷阿根廷
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(阿根廷|根廷|\\bAR\\b|ARG|Argentina|Buenos Aires))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Argentina.png
+  - name: 🇨🇱智利
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(智利|智|\\bCL\\b|CHL|Chile|Santiago))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Chile.png
+  - name: 🇨🇴哥伦比亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(哥伦比亚|\\bCO\\b|COL|Colombia|Bogotá))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Colombia.png
+  - name: 🇵🇪秘鲁
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(秘鲁|秘|\\bPE\\b|PER|Peru|Lima))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Peru.png
+  - name: 🇿🇦南非
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(南非|\\bZA\\b|ZAF|South Africa|Pretoria|Johannesburg))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/South_Africa.png
+  - name: 🇪🇬埃及
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(埃及|\\bEG\\b|EGY|Egypt|Cairo))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Egypt.png
+  - name: 🇳🇬尼日利亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(尼日利亚|\\bNG\\b|\\bNGA\\b|Nigeria|Abuja))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Nigeria.png
+  - name: 🇰🇪肯尼亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(肯尼亚|肯|\\bKE\\b|KEN|Kenya|Nairobi))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Kenya.png
+  - name: 🇦🇺澳大利亚
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(澳大利亚|\\bAU\\b|AUS|Australia|Canberra))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png
+  - name: 🇳🇿新西兰
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(新西兰|\\bNZ\\b|NZL|New Zealand|Wellington))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/New_Zealand.png
+  - name: 🇫🇯斐济
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(斐济|斐|\\bFJ\\b|FJI|Fiji|Suva))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Fiji.png
+  - name: 🇨🇳中国大陆
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(内地|大陆|中国大陆|\\bCN\\b|CHN|PRC|China|Beijing|Shanghai|Shenzhen))(?!(?:.*(回国|校园|游戏|🎮|Game))).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+  - name: 🎮游戏
+    type: url-test
+    interval: 900
+    include-all: true
+    lazy: true
+    hidden: true
+    filter: (?i)^(?=.*(游戏|🎮|Game)).*
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+#========= 规则集 ========#
+rule-providers:
+  APNs:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/GelidVeil/APNs/main/Stash/APNs.yaml
+  AD217:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockmihomo.mrs
+  BiliBili:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+  WeChat:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml
+  ChinaMax:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml
+  ChinaIP:
+    behavior: ipcidr
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
+  AppleCN:
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/Coldvvater/Mononoke/refs/heads/master/Stash/Rules/AppleCN.list
+  Apple:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
+  Microsoft:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+  Google:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+  GitHub:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
+  Ai:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://gist.githubusercontent.com/ddgksf2013/cb4121e8b5c5d865cc949cb8120320c4/raw/Ai.yaml
+  PayPal:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+  Facebook:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Facebook/Facebook.yaml
+  Instagram:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml
+  Line:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line.yaml
+  Whatsapp:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Whatsapp/Whatsapp.yaml
+  Threads:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Threads/Threads.yaml
+  Twitter:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
+  Telegram:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+  Bahamut:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+  Disney:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+  HBO:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
+  Netflix:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
+  YouTube:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+  Spotify:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+  TikTok:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
+  Game:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
+  Epic:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Epic/Epic.yaml
+  Steam:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+  SteamCN:
+    behavior: classical
+    format: yaml
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+#========= 分流规则 ========#
+rules:
+  - RULE-SET,APNs,🇨🇳台湾
+  - RULE-SET,AD217,REJECT
+  - RULE-SET,BiliBili,哔哩哔哩
+  - RULE-SET,WeChat,DIRECT
+  - RULE-SET,ChinaMax,DIRECT
+  - RULE-SET,ChinaIP,DIRECT
+  - RULE-SET,AppleCN,DIRECT
+  - RULE-SET,Apple,Apple
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,Google,Google
+  - RULE-SET,GitHub,国际社交
+  - RULE-SET,Ai,🇺🇸美国
+  - RULE-SET,PayPal,PayPal
+  - RULE-SET,Facebook,国际社交
+  - RULE-SET,Instagram,国际社交
+  - RULE-SET,Line,国际社交
+  - RULE-SET,Whatsapp,国际社交
+  - RULE-SET,Threads,国际社交
+  - RULE-SET,Twitter,国际社交
+  - RULE-SET,Telegram,国际社交
+  - RULE-SET,Bahamut,国际媒体
+  - RULE-SET,Disney,国际媒体
+  - RULE-SET,HBO,国际媒体
+  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,YouTube,国际媒体
+  - RULE-SET,Spotify,🇺🇸美国
+  - RULE-SET,TikTok,国际媒体
+  - RULE-SET,Game,游戏平台
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,SteamCN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,全球畅连
