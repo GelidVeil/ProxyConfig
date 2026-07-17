@@ -1,4 +1,3 @@
-// 页面内容替换：将页面中的地区域名替换为 .com
 function handleResponse(response) {
     var body = response.body;
     if (body && typeof body === 'string') {
