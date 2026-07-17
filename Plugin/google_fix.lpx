@@ -1,7 +1,7 @@
 #!name=Google 全家桶全球固网
-#!desc=强制所有 Google 系服务永久锁定 .com，永不跳转地区域名
+#!desc=强制所有 Google 系服务永久锁定 .com
 #!author=GelidVeil
-#!homepage=https://github.com/GelidVeil/Proxy-Configs
+#!homepage=https://github.com/GelidVeil/ProxyConfig
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/refs/heads/main/App_icon/1024px/Google.png
 
 [MitM]
@@ -23,6 +23,6 @@ DOMAIN-SUFFIX, ytimg.com, PROXY
 DOMAIN-SUFFIX, googlevideo.com, PROXY
 
 [Script]
-http-request ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/Script/main/google_request.js, type=http-request, tag=请求头净化, enable=true
-http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/Script/main/google_redirect.js, type=http-response, tag=重定向拦截, enable=true
-http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/Script/main/google_body.js, type=http-response, tag=页面内容替换, enable=true
+http-request ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/ProxyConfig/refs/heads/main/Script/google_request.js, type=http-request, tag=请求头净化, enable=true
+http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/ProxyConfig/refs/heads/main/Script/google_redirect.js, type=http-response, tag=重定向拦截, enable=true
+http-response ^https?://(.*\.)?(google|youtube|gmail|googleapis|googleusercontent)\.(com|net)/ script-path=https://raw.githubusercontent.com/GelidVeil/ProxyConfig/refs/heads/main/Script/google_body.js, type=http-response, tag=页面内容替换, enable=true
