@@ -1,4 +1,3 @@
-// 重定向拦截：将 30x 响应中的 Location 改回 .com
 function handleResponse(response) {
     var status = response.statusCode;
     if ([301,302,303,307,308].indexOf(status) !== -1) {
