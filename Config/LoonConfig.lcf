@@ -55,7 +55,7 @@ PayPal=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.g
 日本=url-test,🇯🇵日本,interval=600,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 美国=url-test,🇺🇸美国,interval=600,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 # >>>>> 兜底策略组 <<<<< #
-兜底分流=fallback,🇭🇰香港,🇨🇳台湾,🇸🇬新加坡,🇯🇵日本,🇺🇸美国,interval=300,max-timeout=2000,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+兜底分流=fallback,🇭🇰香港,🇨🇳台湾,🇸🇬新加坡,🇯🇵日本,🇺🇸美国,interval=300,max-timeout=2000,img-url=https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/fallback.png
 
 [Proxy Chain]
 
