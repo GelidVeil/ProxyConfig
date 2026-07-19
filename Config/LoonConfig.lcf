@@ -28,11 +28,20 @@ bypass-tun=10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192
 
 [Remote Proxy]
 
+[Remote Filter]
+🌍全球=NameRegex, FilterKey="^(?=.*(.))(?!.*((?i)内地|大陆|回国|校园|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|游戏|🎮|(\b(50|100|200|300|400|500|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|Game)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$"
+🇭🇰香港=NameRegex, FilterKey="^(?=.*((?i)🇭🇰|香港|港|(\b(HK|HKG|Hong Kong|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+🇨🇳台湾=NameRegex, FilterKey="^(?=.*((?i)🇨🇳|台湾|台|灣|(\b(TW|TWN|Taiwan|Taipei)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+🇯🇵日本=NameRegex, FilterKey="^(?=.*((?i)🇯🇵|日本|东京|大阪|(\b(JP|JPN|Japan|Tokyo|Osaka)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+🇸🇬新加坡=NameRegex, FilterKey="^(?=.*((?i)🇸🇬|新加坡|狮|獅|(\b(SG|SGP|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+🇺🇸美国=NameRegex, FilterKey="^(?=.*((?i)🇺🇸|美国|华盛顿|洛杉矶|(\b(US|USA|United States|America|Los Angeles|New York|San Jose)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
+
 [Proxy Group]
 # >>>>> 顶层策略组 <<<<< #
-全球畅连=select,自动选择,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
-国际社交=select,自动选择,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
-国际媒体=select,自动选择,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png
+全球节选=select,🌍全球,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+全球畅连=select,自动选择,香港,台湾,新加坡,日本,美国,全球节选,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+国际社交=select,自动选择,香港,台湾,新加坡,日本,美国,全球节选,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
+国际媒体=select,自动选择,香港,台湾,新加坡,日本,美国,全球节选,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png
 游戏平台=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
 Apple=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
 Microsoft=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
@@ -41,127 +50,12 @@ PayPal=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.g
 哔哩哔哩=select,DIRECT,香港,台湾,新加坡,日本,美国,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png
 
 # >>>>> 地区策略组 <<<<< #
-自动选择=url-test,♻️自动选择AUTO,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
-# > 亚洲
-香港=url-test,🇭🇰香港HK,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-澳门=url-test,🇲🇴澳门MO,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Macao.png
-台湾=url-test,🇨🇳台湾TW,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
-日本=url-test,🇯🇵日本JP,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-韩国=url-test,🇰🇷韩国KR,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
-新加坡=url-test,🇸🇬新加坡SG,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-马来西亚=url-test,🇲🇾马来西亚MY,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Malaysia.png
-印度尼西亚=url-test,🇮🇩印度尼西亚ID,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Indonesia.png
-菲律宾=url-test,🇵🇭菲律宾PH,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Philippines.png
-越南=url-test,🇻🇳越南VN,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Vietnam.png
-泰国=url-test,🇹🇭泰国TH,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Thailand.png
-印度=url-test,🇮🇳印度IN,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png
-土耳其=url-test,🇹🇷土耳其TR,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Turkey.png
-以色列=url-test,🇮🇱以色列IL,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Israel.png
-阿联酋=url-test,🇦🇪阿联酋AE,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_Arab_Emirates.png
-沙特阿拉伯=url-test,🇸🇦沙特阿拉伯SA,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Saudi_Arabia.png
-# > 欧洲
-英国=url-test,🇬🇧英国UK,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png
-德国=url-test,🇩🇪德国DE,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png
-法国=url-test,🇫🇷法国FR,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png
-荷兰=url-test,🇳🇱荷兰NL,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Netherlands.png
-意大利=url-test,🇮🇹意大利IT,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Italy.png
-西班牙=url-test,🇪🇸西班牙ES,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Spain.png
-葡萄牙=url-test,🇵🇹葡萄牙PT,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Portugal.png
-瑞士=url-test,🇨🇭瑞士CH,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Switzerland.png
-冰岛=url-test,🇮🇸冰岛IS,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Iceland.png
-瑞典=url-test,🇸🇪瑞典SE,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Sweden.png
-挪威=url-test,🇳🇴挪威NO,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Norway.png
-丹麦=url-test,🇩🇰丹麦DK,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Denmark.png
-芬兰=url-test,🇫🇮芬兰FI,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Finland.png
-波兰=url-test,🇵🇱波兰PL,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Republic_Of_Poland.png
-捷克=url-test,🇨🇿捷克CZ,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Czech_Republic.png
-爱尔兰=url-test,🇮🇪爱尔兰IE,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Ireland.png
-俄罗斯=url-test,🇷🇺俄罗斯RU,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png
-乌克兰=url-test,🇺🇦乌克兰UA,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Ukraine.png
-# > 北美洲
-美国=url-test,🇺🇸美国US,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-加拿大=url-test,🇨🇦加拿大CA,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Canada.png
-墨西哥=url-test,🇲🇽墨西哥MX,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Mexico.png
-# > 南美洲
-巴西=url-test,🇧🇷巴西BR,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Brazil.png
-阿根廷=url-test,🇦🇷阿根廷AR,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Argentina.png
-智利=url-test,🇨🇱智利CL,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Chile.png
-哥伦比亚=url-test,🇨🇴哥伦比亚CO,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Colombia.png
-秘鲁=url-test,🇵🇪秘鲁PE,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Peru.png
-# > 非洲
-南非=url-test,🇿🇦南非ZA,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/South_Africa.png
-埃及=url-test,🇪🇬埃及EG,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Egypt.png
-尼日利亚=url-test,🇳🇬尼日利亚NG,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Nigeria.png
-肯尼亚=url-test,🇰🇪肯尼亚KE,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Kenya.png
-# > 大洋洲
-澳大利亚=url-test,🇦🇺澳大利亚AU,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png
-新西兰=url-test,🇳🇿新西兰NZ,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/New_Zealand.png
-斐济=url-test,🇫🇯斐济FJ,interval=900,img-url=https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Fiji.png
-# > 其他
-中国大陆=url-test,🇨🇳中国大陆CN,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
-游戏=url-test,🎮游戏GAME,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
-
-[Remote Filter]
-# >>>>> 自动筛选地区节点 <<<<< #
-♻️自动选择AUTO=NameRegex, FilterKey="^(?=.*(.))(?!.*((?i)内地|大陆|回国|校园|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|游戏|🎮|(\b(50|100|200|300|400|500|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic|GAME)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$"
-# > 亚洲
-🇭🇰香港HK=NameRegex, FilterKey="^(?=.*((?i)香港|港|(\b(HK|HKG|Hong Kong|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇲🇴澳门MO=NameRegex, FilterKey="^(?=.*((?i)澳门|(\b(MO|MAC|Macao|Macau)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇳台湾TW=NameRegex, FilterKey="^(?=.*((?i)台湾|台|灣|(\b(TW|TWN|Tai|Taiwan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇯🇵日本JP=NameRegex, FilterKey="^(?=.*((?i)日本|(\b(JP|JPN|Japan|Tokyo|Osaka)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇰🇷韩国KR=NameRegex, FilterKey="^(?=.*((?i)韩国|韩|(\b(KR|KOR|Korea|South Korea|Seoul)(\d+)?\b)))(?!.*((?i)朝鲜|KP|PRK|North Korea|回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇸🇬新加坡SG=NameRegex, FilterKey="^(?=.*((?i)新加坡|狮|獅|(\b(SG|SGP|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇲🇾马来西亚MY=NameRegex, FilterKey="^(?=.*((?i)马来西亚|马来|(\b(MY|MYS|Malaysia|KL|Kuala Lumpur)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇩印度尼西亚ID=NameRegex, FilterKey="^(?=.*((?i)印度尼西亚|印尼|(\b(ID|IDN|Indonesia|Jakarta)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇵🇭菲律宾PH=NameRegex, FilterKey="^(?=.*((?i)菲律宾|菲|(\b(PH|PHL|Philippines|Manila)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇻🇳越南VN=NameRegex, FilterKey="^(?=.*((?i)越南|越|(\b(VN|VNM|Vietnam|Hanoi|Ho Chi Minh)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇹🇭泰国TH=NameRegex, FilterKey="^(?=.*((?i)泰国|(\b(TH|THA|Thailand|Bangkok)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇳印度IN=NameRegex, FilterKey="^(?=.*((?i)印度|(\b(IN|IND|India|Mumbai|Bangalore)(\d+)?\b)))(?!.*((?i)英属印度洋领地|IO|IOT|BIOT|British Indian Ocean Territory|回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇹🇷土耳其TR=NameRegex, FilterKey="^(?=.*((?i)土耳其|(\b(TR|TUR|Turkey|Türkiye|Turkiye|Istanbul|Ankara)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇱以色列IL=NameRegex, FilterKey="^(?=.*((?i)以色列|以|(\b(IL|ISR|Israel|Tel Aviv)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇦🇪阿联酋AE=NameRegex, FilterKey="^(?=.*((?i)阿联酋|(\b(AE|ARE|UAE|United Arab Emirates|Dubai|Abu Dhabi)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇸🇦沙特阿拉伯SA=NameRegex, FilterKey="^(?=.*((?i)沙特阿拉伯|沙特|(\b(SA|SAU|Saudi Arabia|Riyadh)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 欧洲
-🇬🇧英国UK=NameRegex, FilterKey="^(?=.*((?i)英国|(\b(UK|GBR|United Kingdom|Britain|England|London|Manchester)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇩🇪德国DE=NameRegex, FilterKey="^(?=.*((?i)德国|(\b(DE|DEU|Germany|Frankfurt|Berlin)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇫🇷法国FR=NameRegex, FilterKey="^(?=.*((?i)法国|(\b(FR|FRA|France|Paris)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇳🇱荷兰NL=NameRegex, FilterKey="^(?=.*((?i)荷兰|(\b(NL|NLD|Netherlands|Amsterdam)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇹意大利IT=NameRegex, FilterKey="^(?=.*((?i)意大利|意|(\b(IT|ITA|Italy|Milan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇪🇸西班牙ES=NameRegex, FilterKey="^(?=.*((?i)西班牙|(\b(ES|ESP|Spain|Madrid)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇵🇹葡萄牙PT=NameRegex, FilterKey="^(?=.*((?i)葡萄牙|葡|(\b(PT|PRT|Portugal|Lisbon)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇭瑞士CH=NameRegex, FilterKey="^(?=.*((?i)瑞士|(\b(CH|CHE|Switzerland|Zurich)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇸冰岛IS=NameRegex, FilterKey="^(?=.*((?i)冰岛|冰|(\b(IS|ISL|Iceland|Reykjavík|Reykjavik|Akureyri)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇸🇪瑞典SE=NameRegex, FilterKey="^(?=.*((?i)瑞典|(\b(SE|SWE|Sweden|Stockholm)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇳🇴挪威NO=NameRegex, FilterKey="^(?=.*((?i)挪威|挪|(\b(NO|NOR|Norway|Oslo)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇩🇰丹麦DK=NameRegex, FilterKey="^(?=.*((?i)丹麦|(\b(DK|DNK|Denmark|Copenhagen)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇫🇮芬兰FI=NameRegex, FilterKey="^(?=.*((?i)芬兰|芬|(\b(FI|FIN|Finland|Helsinki)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇵🇱波兰PL=NameRegex, FilterKey="^(?=.*((?i)波兰|(\b(PL|POL|Poland|Warsaw)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇿捷克CZ=NameRegex, FilterKey="^(?=.*((?i)捷克|捷|(\b(CZ|CZE|Czech Republic|Czech|Prague)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇮🇪爱尔兰IE=NameRegex, FilterKey="^(?=.*((?i)爱尔兰|(\b(IE|IRL|Ireland|Dublin)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇷🇺俄罗斯RU=NameRegex, FilterKey="^(?=.*((?i)俄罗斯|(\b(RU|RUS|Russia|Moscow)(\d+)?\b)))(?!.*((?i)白俄罗斯|BY|BLR|Belarus|回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇺🇦乌克兰UA=NameRegex, FilterKey="^(?=.*((?i)乌克兰|(\b(UA|UKR|Ukraine|Kyiv|Kiev)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 北美洲
-🇺🇸美国US=NameRegex, FilterKey="^(?=.*((?i)美国|(\b(US|USA|United States|America|Los Angeles|New York|San Jose)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇦加拿大CA=NameRegex, FilterKey="^(?=.*((?i)加拿大|(\b(CA|CAN|Canada|Vancouver|Toronto)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇲🇽墨西哥MX=NameRegex, FilterKey="^(?=.*((?i)墨西哥|(\b(MX|MEX|Mexico|Mexico City)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 南美洲
-🇧🇷巴西BR=NameRegex, FilterKey="^(?=.*((?i)巴西|(\b(BR|BRA|Brazil|Sao Paulo)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇦🇷阿根廷AR=NameRegex, FilterKey="^(?=.*((?i)阿根廷|根廷|(\b(AR|ARG|Argentina|Buenos Aires)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇱智利CL=NameRegex, FilterKey="^(?=.*((?i)智利|智|(\b(CL|CHL|Chile|Santiago)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇨🇴哥伦比亚CO=NameRegex, FilterKey="^(?=.*((?i)哥伦比亚|(\b(CO|COL|Colombia|Bogota)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇵🇪秘鲁PE=NameRegex, FilterKey="^(?=.*((?i)秘鲁|秘|(\b(PE|PER|Peru|Lima)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 非洲
-🇿🇦南非ZA=NameRegex, FilterKey="^(?=.*((?i)南非|(\b(ZA|ZAF|South Africa|Johannesburg)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇪🇬埃及EG=NameRegex, FilterKey="^(?=.*((?i)埃及|(\b(EG|EGY|Egypt|Cairo)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇳🇬尼日利亚NG=NameRegex, FilterKey="^(?=.*((?i)尼日利亚|(\b(NG|NGA|Nigeria|Lagos)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇰🇪肯尼亚KE=NameRegex, FilterKey="^(?=.*((?i)肯尼亚|肯|(\b(KE|KEN|Kenya|Nairobi)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 大洋洲
-🇦🇺澳大利亚AU=NameRegex, FilterKey="^(?=.*((?i)澳大利亚|(\b(AU|AUS|Australia|Sydney|Melbourne)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇳🇿新西兰NZ=NameRegex, FilterKey="^(?=.*((?i)新西兰|(\b(NZ|NZL|New Zealand|Auckland)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🇫🇯斐济FJ=NameRegex, FilterKey="^(?=.*((?i)斐济|斐|(\b(FJ|FJI|Fiji|Suva)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-# > 其他
-🇨🇳中国大陆CN=NameRegex, FilterKey="^(?=.*((?i)内地|大陆|中国大陆|(\b(CN|CHN|PRC|China|Beijing|Shanghai|Shenzhen)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$"
-🎮游戏GAME=NameRegex, FilterKey="^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$"
+自动选择=url-test,🌍全球,interval=900,img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+香港=url-test,🇭🇰香港,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+台湾=url-test,🇨🇳台湾,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+日本=url-test,🇯🇵日本,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+新加坡=url-test,🇸🇬新加坡,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+美国=url-test,🇺🇸美国,interval=900,img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
 [Proxy Chain]
 
