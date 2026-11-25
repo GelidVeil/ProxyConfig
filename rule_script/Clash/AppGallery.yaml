@@ -1,0 +1,13 @@
+# NAME: AppGallery
+# DOMAIN-SUFFIX: 8
+# TOTAL: 8
+payload:
+  - DOMAIN-SUFFIX,appgallery.huawei.com
+  - DOMAIN-SUFFIX,dbankcdn.com
+  - DOMAIN-SUFFIX,dbankcdn.cn
+  - DOMAIN-SUFFIX,emui.dbankcloud.cn
+  - DOMAIN-SUFFIX,hispace.dbankcloud.com
+  - DOMAIN,configserver-
+drcn.platform.dbankcloud.cn
+  - DOMAIN,terms-drcn.platform.dbankcloud.cn
+  - DOMAIN,metrics1-drcn.dt.dbankcloud.cn
